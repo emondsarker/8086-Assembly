@@ -1,6 +1,6 @@
 # 8086-Assembly Problems
 
-This repository contains all the **x86 assembly** code problems I completed in my microprocessor course.
+This repository contains all the **x86 assembly** code problems I completed in my microprocessor course (CSE331).
 The code has comments that explain the thought process behind each solution.
 
 However if you have any questions, email me: emon331@gmail.com
