@@ -8,6 +8,9 @@ However if you have any questions, email me: emon331@gmail.com
 ## List of problems
 *These coincide with the file naming*
 
+1. [Invert an array without using a loop](https://github.com/emondsarker/8086-Assembly#1-invert-an-array-without-using-a-loop)
+2. 
+
 ### 1. Invert an array without using a loop
 ![Screenshot](./readme_asset/Problem_1.png)
 ### 2. Demonstrating of calling a procedure
