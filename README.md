@@ -1,4 +1,6 @@
-# 8086-Assembly Problems
+![thumbnail](./readme_asset/thumbnail2.png)
+# 22 8086 Assembly Problems & Solutions
+By: Emon Sarker
 
 This repository contains all the **x86 assembly** code problems I completed in my microprocessor course (CSE331).
 The code has comments that explain the thought process behind each solution.
