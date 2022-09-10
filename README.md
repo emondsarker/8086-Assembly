@@ -9,7 +9,7 @@ The code has comments that explain the thought process behind each solution.
 However if you have any questions, email me: emon331@gmail.com
 
 ## List of problems
-[x](/#15-check-if-input-strings-are-equal)
+[x](#15-check-if-input-strings-are-equal)
 
 ### 1. Invert an array without using loop
 Declare an array variable with 5 random values. Declare a second array in which you store the values of the first array but inverted
