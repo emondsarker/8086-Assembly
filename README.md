@@ -34,7 +34,7 @@ Table of Content
 21. [Check if input is a prime number](#21-check-if-input-is-a-prime-number)
 22. [Lexicography question](#22-lexicography-question)
 
-
+---
 ### 1. Invert an array without using loop
 
 Declare an array variable with 5 random values. Declare a second array in which you store the values of the first array but inverted
@@ -71,7 +71,7 @@ array2 DB 5 DUP(?)
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_1.png)
 
-
+---
 ### 2. Demonstrating of calling a procedure
 
 Define a procedure PROC named m2 and CALL it 4 times
@@ -107,6 +107,7 @@ END
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_2.png)
 
+---
 ### 3. Demostrating JMP function
 
 Use the jump (JMP) function to skip over a line of code
@@ -142,6 +143,7 @@ ret
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_3.png)
 
+---
 ### 4. Counting number of char in a string
 
 Define a string variable and initialize it with any string value.
@@ -177,6 +179,7 @@ string DB 'ObiWan$'
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_4.png)
 
+---
 ### 5. Calculating the factorial of a number
 
 Take input from the user using the interrupt function (int 21h) and calculate the factorial.
@@ -216,6 +219,7 @@ RET
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_5.png)
 
+---
 ### 6. Printing out a pre-defined string
 
 Define and intialize a string variable.
@@ -238,6 +242,7 @@ string DB "Gotta Catch em all$"
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_6.png)
 
+---
 ### 7. Reversing a string
 
 Define 2 arrays. In one array store a string.
@@ -269,6 +274,7 @@ str2 db 2 dup(?)
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_7.png)
 
+---
 ### 8. Finding sum of an array of numbers
 
 Define and initialize an array of integers.
@@ -300,6 +306,7 @@ array dw 1, 2, 2, 2, 2
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_8.png)
 
+---
 ### 9. Counting number of a specific char in string
 
 Define and intialize a string, "exercise".
@@ -333,6 +340,7 @@ string DB "exercise$"
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_9.png)
 
+---
 ### 10. String concatanation
 
 Define and initialize 2 strings. Concatenate the strings and store it into a new array.
@@ -380,6 +388,7 @@ string3 DB 12 DUP('?'),"$"
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_10.png)
 
+---
 ### 11. Finding length of a string
 
 Define and initialize a string. Write a program to calculate the length of the string
@@ -414,6 +423,7 @@ string DB "pewpew$"
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_11.png)
 
+---
 ### 12. Reverse a string
 
 Take a user inputted string and use the stack to reverse it.
@@ -468,6 +478,7 @@ DEFINE_PTHIS
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_12.png)
 
+---
 ### 13. Shift right using SHR dynamically
 
 Take an input for an integer. Then take an input for the magnitude of shift.
@@ -510,6 +521,7 @@ DEFINE_PRINT_NUM_UNS
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_13.png)
 
+---
 ### 14. Shift left using SHL dynamically
 
 Take an input for an integer. Then take an input for the magnitude of shift.
@@ -552,6 +564,7 @@ DEFINE_PRINT_NUM_UNS
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_14.png)
 
+---
 ### 15. Check if input strings are equal
 
 Take in two user inputted strings.
@@ -687,6 +700,7 @@ END
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_15_1.png)
 
+---
 ### 16. String reversal using Stack
 
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/16%20reverse%20a%20string%20with%20stack.asm)
@@ -698,6 +712,7 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/16%20r
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_16.png)
 
+---
 ### 17. Find index of char in a string
 
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/17%20find%20index%20of%20chars%20in%20a%20string%20input.asm)
@@ -709,6 +724,7 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/17%20f
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_17.png)
 
+---
 ### 18. Take 16bit input and convert to decimal
 
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/18%20taking%2016bit%20input%20and%20converting%20it%20to%20decimal.asm)
@@ -720,6 +736,7 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/18%20t
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_18.png)
 
+---
 ### 19. Print largest value in an array input
 
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/19%20print%20largest%20value%20from%20array%20of%20inputs.asm)
@@ -731,6 +748,7 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/19%20p
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_19.png)
 
+---
 ### 20. Add two arrays together by index
 
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/20%20add%20two%20arrays%20together%20by%20index.asm)
@@ -742,6 +760,7 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/20%20a
 **Screenshot:**
 ![Screenshot](./readme_asset/Problem_20.png)
 
+---
 ### 21. Check if input is a prime number
 
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/21%20check%20if%20input%20is%20a%20prime%20number.asm)
@@ -755,6 +774,7 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/21%20c
 
 ![Screenshot](./readme_asset/Problem_21_2.png)
 
+---
 ### 22. Lexicography question
 
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/22%20lexicography%20question.asm)
