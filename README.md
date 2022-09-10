@@ -31,6 +31,8 @@ However if you have any questions, email me: emon331@gmail.com
 21. [Check if input is a prime number](https://github.com/emondsarker/8086-Assembly/blob/main/21%20check%20if%20input%20is%20a%20prime%20number.asm)
 22. [Lexicography question](https://github.com/emondsarker/8086-Assembly/blob/main/22%20lexicography%20question.asm)
 
+## Screenshots of Solutions
+
 ### 1. Invert an array without using a loop
 ![Screenshot](./readme_asset/Problem_1.png)
 ### 2. Demonstrating of calling a procedure
