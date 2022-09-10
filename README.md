@@ -703,10 +703,61 @@ END
 ---
 ### 16. String reversal using Stack
 
+Take a user inputted string and reverse it using the stack.
+
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/16%20reverse%20a%20string%20with%20stack.asm)
 
 ```
+include emu8086.inc
 
+ORG 100
+
+    CALL PTHIS
+    db 13, 10, 'Enter a String: ', 0
+                             
+    here:
+        mov ah, 01h
+        inc cl
+        int 21h
+        mov ah, 00h
+        push ax
+        cmp al, 13
+        jz out1
+       
+        jmp here
+    
+        mov bl, cl
+    
+    out1:
+    
+        ;compare if string is 0
+        
+        cmp cl, 01h
+        jnz out2
+        
+        CALL PTHIS
+        db 13, 10, 'Emptry String Entered: ', 0
+        jmp exit
+    
+    out2:
+    
+        CALL PTHIS
+        db 13, 10, 'Reversed String: ', 0
+        
+        GOTOXY 0,4
+    
+    there:
+        pop dx
+        mov ah, 02h
+        int 21h
+       
+    LOOP there
+    
+    exit:
+   
+hlt
+
+DEFINE_PTHIS
 ```
 
 **Screenshot:**
@@ -715,10 +766,72 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/16%20r
 ---
 ### 17. Find index of char in a string
 
+Write a program that will take an input of a string and a character.
+Then it will find the indexes where the character appears on the string.
+
+String: "example"
+
+Character: "e"
+
+Output: 0, 6
+
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/17%20find%20index%20of%20chars%20in%20a%20string%20input.asm)
 
 ```
+include emu8086.inc
 
+ORG 100
+
+    CALL PTHIS
+    db 13, 10, 'enter a string: ',0
+    
+    mov dx, 10
+    CALL GET_STRING
+    
+    CALL PTHIS
+    db 13, 10, 'enter a char: ',0
+    mov ah, 01h
+    int 21h
+    
+    mov bl, al ;store char in bl
+    mov bh, 0
+    
+    CALL PTHIS
+    db 13, 10, 'index of instances: ',0
+    
+    here:                          
+        mov dl, [di]
+        inc di
+        inc bh  
+        
+        cmp bl, dl
+        jz there
+        
+        cmp dl, 0
+        jz over
+        jmp here
+    
+    
+    there:
+    
+        mov dl, bh
+        sub dl, 1
+        add dl, 30h
+        mov ah, 02
+        int 21h
+        mov dl, 44
+        int 21h
+        
+        jmp here
+    
+    over:
+     
+
+
+hlt
+   
+DEFINE_GET_STRING
+DEFINE_PTHIS 
 ```
 
 **Screenshot:**
@@ -727,10 +840,65 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/17%20f
 ---
 ### 18. Take 16bit input and convert to decimal
 
+Write a program that takes in a 16 bit input and converts that 16 bit value to decimal
+
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/18%20taking%2016bit%20input%20and%20converting%20it%20to%20decimal.asm)
 
 ```
+include emu8086.inc
 
+ORG 100h
+
+    CALL PTHIS
+    db 13, 10, 'enter a string: ',0
+    mov dx, 17
+    CALL GET_STRING
+    
+    
+    mov cx, 16
+    
+    here:                          
+        mov dl, [di]
+        inc di  
+        
+        cmp dl, 31h
+        jz there 
+        
+    continue:
+    
+        cmp dl, 0
+        jz over        
+        loop here
+    
+    
+    there:
+        mov bx, 1
+        shl bx, cl
+        add ax, bx
+        
+    
+    jmp continue:
+    
+    over:
+    
+        CALL PTHIS
+        db 13, 10, 'decimal: ',0
+        
+        sub ax, 1
+        shr ax, 1
+        
+        
+        CALL PRINT_NUM
+
+
+
+DEFINE_PRINT_NUM
+DEFINE_PRINT_NUM_UNS  
+DEFINE_GET_STRING
+DEFINE_PTHIS
+
+
+end
 ```
 
 **Screenshot:**
@@ -739,10 +907,50 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/18%20t
 ---
 ### 19. Print largest value in an array input
 
+Write a program that takes in an array of input and then finds the maximum in that array then prints it out to the console.
+
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/19%20print%20largest%20value%20from%20array%20of%20inputs.asm)
 
 ```
+include emu8086.inc
 
+ORG 100h
+
+    CALL PTHIS
+    db 13, 10, 'enter an array of numbers to find max: ',0
+    
+    mov bl, 2
+    
+    here:
+        CALL SCAN_NUM
+        GOTOXY 0, bl
+        inc bl
+        cmp CX, 0
+        jz end:
+        
+        cmp AX, CX
+        jc cont
+        jmp here
+    
+    cont:
+        mov AX, CX
+        jmp here
+    
+    
+    end:
+        CALL PTHIS
+        db 13, 10, 'max: ',0
+        CALL PRINT_NUM_UNS
+
+
+DEFINE_SCAN_NUM
+DEFINE_PRINT_NUM
+DEFINE_PRINT_NUM_UNS  
+DEFINE_GET_STRING
+DEFINE_PTHIS
+
+
+end
 ```
 
 **Screenshot:**
@@ -751,10 +959,102 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/19%20p
 ---
 ### 20. Add two arrays together by index
 
+Write a program that takes in 2 inputs of an array of 5 numbers.
+Then add the two arrays and print out the values.
+
+Array 1: 1, 2, 3, 4, 5
+
+Array 2: 5, 4, 3, 2, 1
+
+Output:  6, 6, 6, 6, 6
+
+
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/20%20add%20two%20arrays%20together%20by%20index.asm)
 
 ```
+include emu8086.inc
 
+ORG 100h
+
+    CALL PTHIS
+    db 13, 10, 'enter first 5 numbers: ',0
+    
+    mov bl, 6 ;size of array
+    mov bh, 1
+    lea si, array1
+    
+    loop1:
+        dec bl
+        inc bh
+        GOTOXY 0, bh
+        CALL SCAN_NUM
+        mov [si], cx
+        inc si
+        mov cl, bl
+        loop loop1
+    
+    
+    CALL PTHIS
+    db 13, 10, 'enter second 5 numbers: ',0
+    
+    mov bl, 6 ;size of array
+    inc bh
+    lea si, array2
+    
+    loop2:
+        dec bl
+        inc bh
+        GOTOXY 0, bh
+        CALL SCAN_NUM
+        mov [si], cx
+        inc si
+        mov cl, bl
+        loop loop2
+    
+    lea si, array1
+    lea di, array2
+    
+    mov cl, 5
+    
+    inc bh
+    GOTOXY 0, bh
+    
+    CALL PTHIS
+    db 13, 10, 'array after add: ',0
+    
+    loop3:
+        mov al, 00h
+        add al, [si]
+        add al, [di]
+        inc si
+        inc di
+        
+        mov ah, 00h
+        CALL PRINT_NUM
+        
+        mov ah, 02h
+        mov dl, 44
+        int 21h
+        mov dl, 32
+        int 21h
+        
+        loop loop3
+
+
+
+DEFINE_SCAN_NUM
+DEFINE_PRINT_NUM
+DEFINE_PRINT_NUM_UNS  
+DEFINE_GET_STRING
+DEFINE_PTHIS
+
+
+hlt  
+
+;variable
+
+array1 db 0h,0h,0h,0h,0h
+array2 db 0h,0h,0h,0h,0h
 ```
 
 **Screenshot:**
@@ -763,10 +1063,68 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/20%20a
 ---
 ### 21. Check if input is a prime number
 
+Take in an integer from the user then write a program that will check if the number is a prime number or not.
+
+Input: 13
+
+Output: Prime
+
+Input: 20
+
+Output: Not prime
+
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/21%20check%20if%20input%20is%20a%20prime%20number.asm)
 
 ```
+include emu8086.inc
 
+org 100h
+
+    Call pthis
+    db 13,10,'enter a number to check:',0
+    call scan_num
+    
+    mov al,cl
+    mov bl,al
+    mov dl,2h  
+    
+    here:
+        mov ah,0h
+        div dl
+        mov al,bl
+        cmp ah,0h
+        jz printer
+        inc dl
+        jmp here
+    
+    printer:  
+        cmp dl,bl
+        jz there
+        jnz overhere
+    
+    there:  
+        Call pthis
+        db 13,10,'prime',0
+        jmp end
+        
+    overhere:  
+        Call pthis
+        db 13,10,'not prime',0
+        jmp end
+
+end:
+
+hlt
+
+DEFINE_PTHIS
+DEFINE_GET_STRING
+DEFINE_SCAN_NUM
+DEFINE_PRINT_NUM_UNS  
+DEFINE_PRINT_NUM
+
+;variables  
+arr1 db 20 dup(?)  
+arr2 db 20 dup(?)
 ```
 
 **Screenshot:**
@@ -777,10 +1135,145 @@ Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/21%20c
 ---
 ### 22. Lexicography question
 
+Take two strings as inputs from the user. Compare the two strings and determine if they are the 
+same or not. If they are not, output the string which is lexicographically larger, else print “They 
+are the same”. 
+
 Link to [solution](https://github.com/emondsarker/8086-Assembly/blob/main/22%20lexicography%20question.asm)
 
 ```
+include 'emu8086.inc'
+ORG    100h
 
+LEA    SI, msg1       ; set up pointer (SI) to msg
+ 
+                     ; to ask for the number
+CALL   print_string   ; print message that SI points to
+
+LEA    DI, buffer     ; set up pointer (DI) to input buffer
+MOV    DX, bufSize    ; set size of buffer
+CALL   get_string     ; get name & put in buffer  
+
+lea si,buffer   
+
+GOTOXY 0,1
+LEA    SI, msg2       ; set up pointer (SI) to msg
+ 
+                     ; to ask for the number
+CALL   print_string   ; print message that SI points to
+
+LEA    DI, buffer2     ; set up pointer (DI) to input buffer
+MOV    DX, bufSize2    ; set size of buffer
+CALL   get_string     ; get name & put in buffer  
+
+lea di,buffer2  
+
+
+lea si,buffer 
+mov cx,0
+countno:     
+inc cx 
+mov ax,[si]
+inc si
+cmp ax,0h;  
+
+jnz countno   
+   
+   
+   
+   
+lea di,buffer2     
+  
+mov bx,0
+countno2:     
+inc bx 
+mov ax,[di]
+inc di
+cmp ax,0h;  
+jnz countno2 
+
+
+ dec cx
+
+
+
+
+lea di,buffer2  
+   
+lea si,buffer 
+loopin:  
+
+mov al,[di]  
+mov bl,[si]
+cmp  bl,al
+jc printl
+cmp al,bl
+jc printlp
+jz loop1 
+ 
+jnz printno 
+loop1:inc si
+inc di
+loop loopin
+jmp printyes
+
+printno:        
+         
+call pthis 
+ DB 13, 10
+  db "No", 0  
+  jmp done  
+  
+  
+
+  printyes:
+call pthis
+ DB 13, 10
+  db "They are the same", 0 
+  jmp done
+
+
+
+
+
+
+
+
+  printl:  
+  
+    lea si,buffer2  
+    
+GOTOXY 0,3
+    CALL   print_string 
+    jmp done 
+                  
+
+
+    printlp:  
+  
+    lea si,buffer  
+    
+GOTOXY 0,3
+    CALL   print_string  
+                  
+
+
+done:RET                                ; return to operating system.
+
+; data
+msg1   DB "Enter string: ", 0  
+msg2   DB "Enter string2: ", 0  
+buffer DB 20 DUP (0)  ; input buffer for get_string    
+buffer2 DB 20 DUP (0)  ; input buffer for get_string
+
+ 
+bufSize = $-buffer    ; calculates size of buffer
+ 
+bufSize2 = $-buffer2 
+DEFINE_GET_STRING    
+DEFINE_PTHIS
+DEFINE_PRINT_STRING
+END
 ```
 
 **Screenshot:**
