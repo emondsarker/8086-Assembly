@@ -1,12 +1,15 @@
 ![thumbnail](./readme_asset/thumbnail2.png)
 # 22 8086 Assembly Problems & Solutions
-## Link to repo: [https://github.com/emondsarker/8086-Assembly](https://github.com/emondsarker/8086-Assembly)
+**Link to repo: [https://github.com/emondsarker/8086-Assembly](https://github.com/emondsarker/8086-Assembly)**
+
+
 By: Emon Sarker
 
-This repository contains all the **x86 assembly** code problems I completed in my microprocessor course (CSE331).
-The code has comments that explain the thought process behind each solution.
+Hello there!
 
-However if you have any questions, email me: emon331@gmail.com
+This repository contains all the **x86 assembly** code problems I completed in my microprocessor course (CSE331). Each problem has their prompts assigned to them and a link to the **.asm** file solution. All of the code was simulated using **emu8086**. Under each solution I have attached a screenshot of the simulation running
+
+If you have any questions, email me: emon331@gmail.com
 
 ## List of problems
 
